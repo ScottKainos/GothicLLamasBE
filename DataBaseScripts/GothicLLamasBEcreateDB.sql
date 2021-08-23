@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS capabilityAndRoles (
     bandLevel ENUM ('7 - apprentice', '6 - trainee', '5 - associate', '4 - senior associate',
     '3 - consultant', '2 - manager', '1 - principal '),
     jobRole VARCHAR(50) NOT NULL,
-    jobDescription VARCHAR(500) NOT NULL,
+    jobDescription VARCHAR(1000) NOT NULL,
     linkToFullDescription VARCHAR (200) DEFAULT NULL
 );
 

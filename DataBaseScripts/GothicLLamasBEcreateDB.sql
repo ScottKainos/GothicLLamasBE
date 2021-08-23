@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS capabilityAndRoles (
     '3 - consultant', '2 - manager', '1 - principal '),
     jobRole VARCHAR(50) NOT NULL,
     jobDescription VARCHAR(500) NOT NULL,
-    linkToFullDescription VARCHAR (200) NOT NULL
+    linkToFullDescription VARCHAR (200) DEFAULT NULL
 );
 
 INSERT INTO 'capabilityAndRoles' VALUES ('Engineering', '5 - associate', 'Software Engineer', 'As a Software Engineer (Associate) in Kainos, you’ll be responsible for developing high quality solutions which delight our customers and impact the lives of users worldwide. You’ll do this whilst learning about new technologies and approaches, with talented colleagues that will help you to learn, develop and grow.', '');

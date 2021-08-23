@@ -2,8 +2,6 @@ CREATE DATABASE GothicLlamasDB;
 
 USE GothicLlamasDB;
 
-DROP TABLE IF EXISTS capabilityAndRoles;
-
 CREATE TABLE IF NOT EXISTS capabilityAndRoles (
     capability ENUM('Engineering', 'Platforms', 'Data', 'Artificial Intelligence', 'Cyber Security',
     'Product', 'Delivery', 'Operations', 'Business Development and Marketing', 'Organisational Strategy and Planning',

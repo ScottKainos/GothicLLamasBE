@@ -9,8 +9,4 @@ CREATE TABLE IF NOT EXISTS capabilityAndRoles (
     jobRole VARCHAR(50) NOT NULL,
     jobDescription VARCHAR(500) NOT NULL,
     linkToFullDescription VARCHAR (200) NOT NULL
-<<<<<<< HEAD
 );
-=======
-);
->>>>>>> 65bad3efddba3e66425417f1f3d16057eb0b270b

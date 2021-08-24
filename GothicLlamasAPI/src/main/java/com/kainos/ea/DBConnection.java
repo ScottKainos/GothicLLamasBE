@@ -17,7 +17,7 @@ public class DBConnection {
         String password;
         String host;
 
-        try (var f = new FileInputStream("/Users/ciaran.mullan/git/GothicLlamasAPI/src/main/java/com/kainos/ea/db.properties")) {
+        try (var f = new FileInputStream("db.properties")) {
             Properties props = new Properties();
             props.load(f);
             user = props.getProperty("user");
@@ -38,11 +38,8 @@ public class DBConnection {
     public ResultSet QueryDatabase() {
         try {
             Statement st = c.createStatement();
-            ResultSet rs = st.executeQuery("SELECT capability, bandLevel, jobRole, jobDescription, linkToFullDescription FROM capabilityAndRoles limit 5");
-//            while (rs.next()) {
-//                System.out.println(rs.getString("capability"));
-//            }
-            return rs;
+            return st.executeQuery("SELECT capability, bandLevel, jobRole, jobDescription, linkToFullDescription FROM capabilityAndRoles limit 5");
+            
         } catch (SQLException e) {
             e.printStackTrace();
         }

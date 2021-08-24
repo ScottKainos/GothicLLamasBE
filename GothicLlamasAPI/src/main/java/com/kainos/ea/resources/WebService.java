@@ -26,6 +26,7 @@ public class WebService {
     @Produces(MediaType.APPLICATION_JSON)
     public List<CapabilitiesAndRoles> getMsg(@PathParam("msg") String message) {
         try {
+            System.out.println("poc achieved!");
             ResultSet testRS = db.QueryDatabase();
             List<CapabilitiesAndRoles> jsonArray = new ArrayList<CapabilitiesAndRoles>();
             while (testRS.next()) {
@@ -43,9 +44,6 @@ public class WebService {
         } catch (Exception e) {
             return null;
         }
-
-
-
     }
 
     @GET

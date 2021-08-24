@@ -1,0 +1,19 @@
+server:
+  applicationConnectors:
+    - type: http
+      port: 8000
+  adminConnectors:
+    - type: http
+      port: 8001
+
+database:
+  driverClass: "com.mysql.jdbc.Driver"
+  user: GothicLlamasDBBot
+  password: password
+  url: "jdbc:mysql://academy2020.cpc8rvmbbd9k.eu-west-2.rds.amazonaws.com/GothicLlamasDB?useSSL=false"
+
+logging:
+  level: INFO
+  loggers:
+    com.kainos.ea: DEBUG
+

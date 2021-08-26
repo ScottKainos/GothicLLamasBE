@@ -13,6 +13,4 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Show status
        - run: echo "This job's status is ${{ job.status }}."
-         

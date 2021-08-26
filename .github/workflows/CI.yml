@@ -17,5 +17,5 @@ jobs:
         uses: actions/checkout@v2
       - name: Build and Run Tests
         working-directory: ./GothicLlamasAPI
-        run: mvn clean test
+        run: mvn --no-transfer-progress clean test
       - run: echo "This job's status is ${{ job.status }}."

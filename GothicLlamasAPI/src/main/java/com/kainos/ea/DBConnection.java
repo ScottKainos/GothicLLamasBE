@@ -39,7 +39,8 @@ public class DBConnection {
     public ResultSet QueryDatabase() {
         try {
             Statement st = c.createStatement();
-            return st.executeQuery("SELECT capability, bandLevel, jobRole, jobDescription, linkToFullDescription FROM capabilityAndRoles limit 5");
+            //select all distinct job roles within kainos from the database
+            return st.executeQuery("SELECT DISTINCT jobRole AS \"Job Role\" FROM capabilityAndRoles");
             
         } catch (SQLException e) {
             e.printStackTrace();

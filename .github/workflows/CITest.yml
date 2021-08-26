@@ -1,0 +1,18 @@
+name: CI
+# Trigger the workflow on push to any branch except main
+on:
+  push:
+    branches:
+      - '*'
+      - '!main'
+jobs:
+  # build test name of status that is set to green or red depending on if tests succeed
+  # used for pr merging rules and requests
+  build-test:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Show status
+       - run: echo "This job's status is ${{ job.status }}."
+         

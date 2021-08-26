@@ -1,0 +1,20 @@
+name: Test after PR merge to main
+# Trigger the workflow on push to any branch except main
+on:
+  push:
+    branches:
+      - main
+jobs:
+  # build test name of status that is set to green or red depending on if tests succeed
+  # used for pr merging rules and requests
+  build-test:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+      - name: Build and Run Tests
+        working-directory: ./GothicLlamasAPI
+        run: mvn --no-transfer-progress clean test
+      - run: echo "This job's status is ${{ job.status }}."

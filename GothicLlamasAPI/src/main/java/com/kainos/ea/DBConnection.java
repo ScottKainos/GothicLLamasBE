@@ -12,11 +12,9 @@ public class DBConnection {
     }
 
     public static void connect() {
-
         String user;
         String password;
         String host;
-
 
         try (var f = new FileInputStream("db.properties")) {
             Properties props = new Properties();

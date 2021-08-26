@@ -17,6 +17,7 @@ public class DBConnection {
         String password;
         String host;
 
+
         try (var f = new FileInputStream("db.properties")) {
             Properties props = new Properties();
             props.load(f);

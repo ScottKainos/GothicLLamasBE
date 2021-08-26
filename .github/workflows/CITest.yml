@@ -1,4 +1,4 @@
-name: CI
+name: CI Test
 # Trigger the workflow on push to any branch except main
 on:
   push:

@@ -15,9 +15,8 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v1
-      - name: Navigate to correct directory
-        run: cd GothicLlamasAPI
      - name: Build and Run Tests
+         working-directory: ./GothicLlamasAPI
         run: mvn clean test
       - name: Publish Test Report
         uses: mikepenz/action-junit-report@v2

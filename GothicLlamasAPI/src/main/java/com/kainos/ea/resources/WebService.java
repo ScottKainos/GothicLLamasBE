@@ -19,9 +19,9 @@ public class WebService {
     @Path("/jobRoles")
     @Produces(MediaType.APPLICATION_JSON)
     public List<CapabilitiesAndRoles> getMsg() {
+
         try {
-            System.out.println("poc achieved!");
-            ResultSet testRS = db.QueryDatabase();
+            ResultSet testRS = db.U001();
             List<CapabilitiesAndRoles> jsonArray = new ArrayList<CapabilitiesAndRoles>();
             while (testRS.next()) {
                 int columns = testRS.getMetaData().getColumnCount();
@@ -39,5 +39,28 @@ public class WebService {
 
     public DBConnection getDb() {
         return db;
+
+    }
+    @GET
+    @Path("/JobSpecifications")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<CapabilitiesAndRoles> JobSpecifications(){
+        try {
+            ResultSet testRS = db.U002();
+            List<CapabilitiesAndRoles> jsonArray = new ArrayList<CapabilitiesAndRoles>();
+            while (testRS.next()) {
+                int columns = testRS.getMetaData().getColumnCount();
+                CapabilitiesAndRoles obj = new CapabilitiesAndRoles();
+                //collect job rol into object
+                obj.setJobRole(testRS.getString("Job Role"));
+                obj.setJobDescription(testRS.getString("Job Description"));
+                obj.setLinkToFullDescription(testRS.getString("Link to SharePoint"));
+                jsonArray.add(obj);
+            }
+            System.out.println(jsonArray);
+            return jsonArray;
+        } catch (Exception e) {
+            return null;
+        }
     }
 }

@@ -22,12 +22,11 @@ public class WebService {
     DBConnection db = new DBConnection();
 
     @GET
-    @Path("/print/{msg}")
+    @Path("/JobRoles")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<CapabilitiesAndRoles> getMsg(@PathParam("msg") String message) {
+    public List<CapabilitiesAndRoles> JobRoles(){
         try {
-            System.out.println("poc achieved!");
-            ResultSet testRS = db.QueryDatabase();
+            ResultSet testRS = db.U001();
             List<CapabilitiesAndRoles> jsonArray = new ArrayList<CapabilitiesAndRoles>();
             while (testRS.next()) {
                 int columns = testRS.getMetaData().getColumnCount();
@@ -44,16 +43,26 @@ public class WebService {
     }
 
     @GET
-    @Path("/testJSON")
+    @Path("/JobSpecifications")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<?> testAPI(){
-//
-//        if (test.size() > 0){
-//            return test;
-//        } else {
-          return Collections.singletonList("No entries found.");
-//        }
-
+    public List<CapabilitiesAndRoles> JobSpecifications(){
+        try {
+            ResultSet testRS = db.U002();
+            List<CapabilitiesAndRoles> jsonArray = new ArrayList<CapabilitiesAndRoles>();
+            while (testRS.next()) {
+                int columns = testRS.getMetaData().getColumnCount();
+                CapabilitiesAndRoles obj = new CapabilitiesAndRoles();
+                //collect job rol into object
+                obj.setJobRole(testRS.getString("Job Role"));
+                obj.setJobDescription(testRS.getString("Job Description"));
+                obj.setLinkToFullDescription(testRS.getString("Link to SharePoint"));
+                jsonArray.add(obj);
+            }
+            System.out.println(jsonArray);
+            return jsonArray;
+        } catch (Exception e) {
+            return null;
+        }
     }
 
 }

@@ -65,4 +65,26 @@ public class WebService {
         }
     }
 
+    @GET
+    @Path("/JobCapability")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<CapabilitiesAndRoles> JobCapability(){
+        try {
+            ResultSet testRS = db.U003();
+            List<CapabilitiesAndRoles> jsonArray = new ArrayList<CapabilitiesAndRoles>();
+            while (testRS.next()) {
+                int columns = testRS.getMetaData().getColumnCount();
+                CapabilitiesAndRoles obj = new CapabilitiesAndRoles();
+                //collect job rol into object
+                obj.setJobRole(testRS.getString("Job Role"));
+                obj.setCapability(testRS.getString("Capability"));
+                jsonArray.add(obj);
+            }
+            System.out.println(jsonArray);
+            return jsonArray;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
 }

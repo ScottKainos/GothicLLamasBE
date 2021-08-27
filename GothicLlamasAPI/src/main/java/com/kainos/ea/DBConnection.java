@@ -57,4 +57,15 @@ public class DBConnection {
         }
         return null;
     }
+    public ResultSet U003() {
+        try {
+            Statement st = c.createStatement();
+            //select all distinct job roles within kainos from the database
+            return st.executeQuery("SELECT jobRole AS \"Job role in Kainos\", capability AS \"Capability\" FROM capabilityAndRoles;");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

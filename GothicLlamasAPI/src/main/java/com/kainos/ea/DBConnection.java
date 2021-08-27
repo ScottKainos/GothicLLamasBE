@@ -45,4 +45,16 @@ public class DBConnection {
         }
         return null;
     }
+
+    public ResultSet customQuery(String query) {
+        try {
+            Statement st = c.createStatement();
+            //select all distinct job roles within kainos from the database
+            return st.executeQuery(query);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

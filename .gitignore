@@ -4,6 +4,7 @@ jspm_packages/
 
 # DB Credentials
 db.properties
+config.yml
 
 # Intellij related
 .DS_Store

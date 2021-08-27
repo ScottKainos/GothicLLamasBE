@@ -32,11 +32,8 @@ public class WebService {
             while (testRS.next()) {
                 int columns = testRS.getMetaData().getColumnCount();
                 CapabilitiesAndRoles obj = new CapabilitiesAndRoles();
-                    obj.setCapability(testRS.getString("capability"));
-                    obj.setBandLevel(testRS.getString("bandLevel"));
-                    obj.setJobRole(testRS.getString("jobRole"));
-                    obj.setJobDescription(testRS.getString("jobDescription"));
-                    obj.setLinkToFullDescription(testRS.getString("linkToFullDescription"));
+                //collect job rol into object
+                obj.setJobRole(testRS.getString("Job Role"));
                 jsonArray.add(obj);
             }
             System.out.println(jsonArray);

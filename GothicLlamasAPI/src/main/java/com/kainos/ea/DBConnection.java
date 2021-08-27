@@ -34,12 +34,24 @@ public class DBConnection {
         }
     }
 
-    public ResultSet QueryDatabase() {
+    public ResultSet U001() {
         try {
             Statement st = c.createStatement();
             //select all distinct job roles within kainos from the database
             return st.executeQuery("SELECT DISTINCT jobRole AS \"Job Role\" FROM capabilityAndRoles");
             
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public ResultSet U002() {
+        try {
+            Statement st = c.createStatement();
+            //select all distinct job roles within kainos from the database
+            return st.executeQuery("SELECT jobRole AS \"Job Role\", jobDescription AS \"Job description\", linkToFullDescription AS \"Link to SharePoint\" FROM capabilityAndRoles;");
+
         } catch (SQLException e) {
             e.printStackTrace();
         }

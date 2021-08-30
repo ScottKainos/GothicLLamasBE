@@ -26,7 +26,7 @@ public class WebService {
     @Produces(MediaType.APPLICATION_JSON)
     public List<CapabilitiesAndRoles> JobRoles(){
         try {
-            ResultSet testRS = db.U001();
+            ResultSet testRS = db.SelectJobRole();
             List<CapabilitiesAndRoles> jsonArray = new ArrayList<CapabilitiesAndRoles>();
             while (testRS.next()) {
                 int columns = testRS.getMetaData().getColumnCount();
@@ -47,7 +47,7 @@ public class WebService {
     @Produces(MediaType.APPLICATION_JSON)
     public List<CapabilitiesAndRoles> JobSpecifications(){
         try {
-            ResultSet testRS = db.U002();
+            ResultSet testRS = db.SelectJobRoleAndDescription();
             List<CapabilitiesAndRoles> jsonArray = new ArrayList<CapabilitiesAndRoles>();
             while (testRS.next()) {
                 int columns = testRS.getMetaData().getColumnCount();
@@ -70,7 +70,7 @@ public class WebService {
     @Produces(MediaType.APPLICATION_JSON)
     public List<CapabilitiesAndRoles> JobCapability(){
         try {
-            ResultSet testRS = db.U003();
+            ResultSet testRS = db.SelectJobRoleAndCapability();
             List<CapabilitiesAndRoles> jsonArray = new ArrayList<CapabilitiesAndRoles>();
             while (testRS.next()) {
                 int columns = testRS.getMetaData().getColumnCount();

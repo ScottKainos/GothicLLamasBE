@@ -34,7 +34,7 @@ public class DBConnection {
         }
     }
 
-    public ResultSet U001() {
+    public ResultSet SelectJobRole() {
         try {
             Statement st = c.createStatement();
             //select all distinct job roles within kainos from the database
@@ -46,7 +46,7 @@ public class DBConnection {
         return null;
     }
 
-    public ResultSet U002() {
+    public ResultSet SelectJobRoleAndDescription() {
         try {
             Statement st = c.createStatement();
             //select all distinct job roles within kainos from the database
@@ -57,11 +57,11 @@ public class DBConnection {
         }
         return null;
     }
-    public ResultSet U003() {
+    public ResultSet SelectJobRoleAndCapability() {
         try {
             Statement st = c.createStatement();
             //select all distinct job roles within kainos from the database
-            return st.executeQuery("SELECT jobRole AS \"Job role in Kainos\", capability AS \"Capability\" FROM capabilityAndRoles;");
+            return st.executeQuery("SELECT jobRole AS \"Job role in Kainos\", capability AS \"Capability\" FROM capabilityAndRoles ORDER BY capability;");
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -69,3 +69,6 @@ public class DBConnection {
         return null;
     }
 }
+
+
+

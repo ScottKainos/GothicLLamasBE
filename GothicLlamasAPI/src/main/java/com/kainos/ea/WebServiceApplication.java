@@ -1,6 +1,5 @@
 package com.kainos.ea;
 
-import com.kainos.ea.resources.WebService;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
@@ -34,7 +33,9 @@ public class WebServiceApplication extends Application<WebServiceConfiguration> 
 
         final JdbiFactory factory = new JdbiFactory();
         final Jdbi jdbi = factory.build(environment, configuration.getDataSourceFactory(), "mysql");
-        environment.jersey().register(new WebService());
+
+        Service wcService = new Service();
+        environment.jersey().register(new WebController(wcService));
     }
 }
 

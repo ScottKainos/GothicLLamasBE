@@ -18,29 +18,18 @@ import java.sql.*;
 import java.util.*;
 
 @Path("/api")
-public class WebService {
-    DBConnection db = new DBConnection();
+public class WebController {
+    private Service webService;
+
+    public WebController(Service webService) {
+        this.webService = webService;
+    }
 
     @GET
     @Path("/print/{msg}")
     @Produces(MediaType.APPLICATION_JSON)
     public List<CapabilitiesAndRoles> getMsg(@PathParam("msg") String message) {
-        try {
-            System.out.println("poc achieved!");
-            ResultSet testRS = db.QueryDatabase();
-            List<CapabilitiesAndRoles> jsonArray = new ArrayList<CapabilitiesAndRoles>();
-            while (testRS.next()) {
-                int columns = testRS.getMetaData().getColumnCount();
-                CapabilitiesAndRoles obj = new CapabilitiesAndRoles();
-                //collect job rol into object
-                obj.setJobRole(testRS.getString("Job Role"));
-                jsonArray.add(obj);
-            }
-            System.out.println(jsonArray);
-            return jsonArray;
-        } catch (Exception e) {
-            return null;
-        }
+        return webService.getAllJobRoles();
     }
 
     @GET

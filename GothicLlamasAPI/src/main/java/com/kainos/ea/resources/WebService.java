@@ -31,7 +31,7 @@ public class WebService {
             while (testRS.next()) {
                 int columns = testRS.getMetaData().getColumnCount();
                 CapabilitiesAndRoles obj = new CapabilitiesAndRoles();
-                //collect job rol into object
+                //collect job role into object
                 obj.setJobRole(testRS.getString("Job Role"));
                 jsonArray.add(obj);
             }
@@ -52,7 +52,7 @@ public class WebService {
             while (testRS.next()) {
                 int columns = testRS.getMetaData().getColumnCount();
                 CapabilitiesAndRoles obj = new CapabilitiesAndRoles();
-                //collect job rol into object
+                //collect job role into object
                 obj.setJobRole(testRS.getString("Job Role"));
                 obj.setJobDescription(testRS.getString("Job Description"));
                 obj.setLinkToFullDescription(testRS.getString("Link to SharePoint"));
@@ -75,7 +75,7 @@ public class WebService {
             while (testRS.next()) {
                 int columns = testRS.getMetaData().getColumnCount();
                 CapabilitiesAndRoles obj = new CapabilitiesAndRoles();
-                //collect job rol into object
+                //collect job role into object
                 obj.setJobRole(testRS.getString("Job Role"));
                 obj.setCapability(testRS.getString("Capability"));
                 jsonArray.add(obj);

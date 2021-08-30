@@ -30,7 +30,7 @@ public class WebControllerTest {
     @Test
     public void getMsgReturnsListFromService() {
         var expectedList = List.of(new CapabilitiesAndRoles());
-        when(wcService.getAllJobRoles(anyString())).thenReturn(expectedList);
+        //when(wcService.getAllJobRoles(anyString())).thenReturn(expectedList);
 
         List<CapabilitiesAndRoles> actualList = wc.getMsg("test");
 

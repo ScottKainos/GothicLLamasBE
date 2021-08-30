@@ -1,21 +1,22 @@
 package com.kainos.ea.resources;
 
 import com.kainos.ea.objects.CapabilitiesAndRoles;
-import org.jdbi.v3.core.Jdbi.*;
+import org.jdbi.v3.core.Jdbi;
+import org.jdbi.v3.sqlobject.statement.SqlQuery;
+import io.dropwizard.jdbi3.*;
 import java.util.List;
 
-public class Service implements CapabilitiesAndRolesMapper {
+public class Service {
+    private CapabilitiesAndRolesMapper dao;
 
-
-    public Service() {
-
+    public Service(CapabilitiesAndRolesMapper dao) {
+        this.dao = dao;
     }
 
-    @Override
     public List<CapabilitiesAndRoles> getAllJobRoles() {
-        List<CapabilitiesAndRoles> jobRoles = Jdbi.withExtension(CapabilitiesAndRolesMapper.class, mapper -> {
-            mapper.getAllJobRoles();
-        });
-        return jobRoles;
+        return dao.getAllJobRoles();
+//        final CapabilitiesAndRolesMapper dao = jdbi.onDemand(CapabilitiesAndRolesMapper.class);
+//        List<CapabilitiesAndRoles> jobRoles = dao.getAllJobRoles();
+//        return jobRoles;
     }
 }

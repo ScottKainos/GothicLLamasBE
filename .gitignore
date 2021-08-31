@@ -8,6 +8,6 @@ config.yml
 
 # Intellij related
 .DS_Store
-.idea
+.idea/
 GothicLlamasAPI/dependency-reduced-pom.xml
 GothicLlamasAPI/target/

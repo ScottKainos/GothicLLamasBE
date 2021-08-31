@@ -10,8 +10,8 @@ public class JobRoleAndCapabilityMapper implements RowMapper<CapabilitiesAndRole
     @Override
     public CapabilitiesAndRoles map(ResultSet r, StatementContext ctx) throws SQLException {
         CapabilitiesAndRoles cap = new CapabilitiesAndRoles();
-        cap.setJobRole(r.getString("Job Role"));
-        cap.setCapability(r.getString("Capability"));
+        cap.setJobRole(r.getString("jobRole"));
+        cap.setCapability(r.getString("capability"));
         return cap;
     }
 }

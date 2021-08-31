@@ -21,17 +21,17 @@ public interface CapabilitiesAndRolesDAO {
 
     @SqlQuery("""
         SELECT
-            jobRole AS "Job Role",
-            jobDescription AS "Job description",
-            linkToFullDescription AS "Link to SharePoint"
+            jobRole,
+            jobDescription,
+            linkToFullDescription
         FROM capabilityAndRoles;""")
     @RegisterRowMapper(JobRolesAndSpecificationMapper.class)
     List<CapabilitiesAndRoles> getJobRoleAndSpecifications();
 
     @SqlQuery("""
         SELECT
-            jobRole AS "Job Role",
-            capability AS "Capability"
+            jobRole,
+            capability
         FROM capabilityAndRoles;""")
     @RegisterRowMapper(JobRoleAndCapabilityMapper.class)
     List<CapabilitiesAndRoles> getJobRoleAndCapability();

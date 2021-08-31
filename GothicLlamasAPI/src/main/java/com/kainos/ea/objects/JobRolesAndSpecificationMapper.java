@@ -9,9 +9,9 @@ public class JobRolesAndSpecificationMapper implements RowMapper<CapabilitiesAnd
     @Override
     public CapabilitiesAndRoles map(ResultSet r, StatementContext ctx) throws SQLException {
         CapabilitiesAndRoles cap = new CapabilitiesAndRoles();
-        cap.setJobRole(r.getString("Job Role"));
-        cap.setJobDescription(r.getString("Job description"));
-        cap.setLinkToFullDescription(r.getString("Link to SharePoint"));
+        cap.setJobRole(r.getString("jobRole"));
+        cap.setJobDescription(r.getString("jobDescription"));
+        cap.setLinkToFullDescription(r.getString("linkToFullDescription"));
         return cap;
     }
 }

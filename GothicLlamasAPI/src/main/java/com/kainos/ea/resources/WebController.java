@@ -42,7 +42,9 @@ public class WebController {
     @GET
     @Path("/JobCapability")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<CapabilitiesAndRoles>  jobCapability(){return webService.getJobRoleAndCapability();}
+    public List<CapabilitiesAndRoles> jobCapability(){
+        return webService.getJobRoleAndCapability();
+    }
 
 
 }

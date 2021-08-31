@@ -6,11 +6,6 @@ import io.dropwizard.setup.Environment;
 import io.dropwizard.jdbi3.*;
 import com.kainos.ea.resources.*;
 import org.jdbi.v3.core.Jdbi;
-import com.kainos.ea.DBConnection;
-
-import java.io.FileInputStream;
-import java.sql.*;
-import java.util.Properties;
 
 public class WebServiceApplication extends Application<WebServiceConfiguration> {
 
@@ -43,7 +38,7 @@ public void run(final WebServiceConfiguration configuration,
     // TODO: implement application
     final JdbiFactory factory = new JdbiFactory();
     final Jdbi jdbi = factory.build(environment, configuration.getDataSourceFactory(), "mysql");
-    final CapabilitiesAndRolesMapper dao = jdbi.onDemand(CapabilitiesAndRolesMapper.class);
+    final CapabilitiesAndRolesDAO dao = jdbi.onDemand(CapabilitiesAndRolesDAO.class);
     final Service wcService = new Service(dao);
     environment.jersey().register(new WebController(wcService));
 }

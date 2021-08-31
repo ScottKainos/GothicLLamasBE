@@ -1,15 +1,13 @@
 package com.kainos.ea.resources;
 
 import com.kainos.ea.objects.CapabilitiesAndRoles;
-import org.jdbi.v3.core.Jdbi;
-import org.jdbi.v3.sqlobject.statement.SqlQuery;
-import io.dropwizard.jdbi3.*;
+
 import java.util.List;
 
 public class Service {
-    private CapabilitiesAndRolesMapper dao;
+    private CapabilitiesAndRolesDAO dao;
 
-    public Service(CapabilitiesAndRolesMapper dao) {
+    public Service(CapabilitiesAndRolesDAO dao) {
         this.dao = dao;
     }
 

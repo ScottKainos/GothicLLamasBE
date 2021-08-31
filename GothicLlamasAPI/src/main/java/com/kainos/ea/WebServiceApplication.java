@@ -21,17 +21,6 @@ public class WebServiceApplication extends Application<WebServiceConfiguration> 
     @Override
     public void initialize(final Bootstrap<WebServiceConfiguration> bootstrap) {}
 
-//    @Override
-//    public void run(final WebServiceConfiguration configuration,
-//                    final Environment environment) {
-//        // TODO: implement application
-//
-//        final JdbiFactory factory = new JdbiFactory();
-//        final Jdbi jdbi = factory.build(environment, configuration.getDataSourceFactory(), "mysql");
-//
-//        Service wcService = new Service();
-//        environment.jersey().register(new WebController(wcService));
-//    }
 @Override
 public void run(final WebServiceConfiguration configuration,
                 final Environment environment) {

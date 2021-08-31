@@ -8,12 +8,15 @@ import java.sql.SQLException;
 
 
 
-public class CapabilitiesAndRolesMapper implements RowMapper<CapabilitiesAndRoles> {
+public class JobRoleMapper implements RowMapper<CapabilitiesAndRoles> {
     @Override
     public CapabilitiesAndRoles  map(ResultSet r, StatementContext ctx) throws SQLException
     {
-        return new CapabilitiesAndRoles(r.getString("capability"), r.getString("bandLevel"),
-                r.getString("jobRole"), r.getString("jobDescription"), r.getString("linkToFullDescription"));
+        CapabilitiesAndRoles cap = new CapabilitiesAndRoles();
+        cap.setJobRole(r.getString("jobRole"));
+        return cap;
     }
 }
+
+
 

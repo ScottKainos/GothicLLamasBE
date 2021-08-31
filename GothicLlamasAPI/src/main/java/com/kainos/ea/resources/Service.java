@@ -13,8 +13,15 @@ public class Service {
 
     public List<CapabilitiesAndRoles> getAllJobRoles() {
         return dao.getAllJobRoles();
-//        final CapabilitiesAndRolesMapper dao = jdbi.onDemand(CapabilitiesAndRolesMapper.class);
-//        List<CapabilitiesAndRoles> jobRoles = dao.getAllJobRoles();
-//        return jobRoles;
     }
+
+    public List<CapabilitiesAndRoles> getJobRoleAndSpecifications() {
+        return dao.getJobRoleAndSpecifications();
+    }
+
+    public List<CapabilitiesAndRoles> getJobRoleAndCapability(){
+        return dao.getJobRoleAndCapability();
+    }
+
+
 }

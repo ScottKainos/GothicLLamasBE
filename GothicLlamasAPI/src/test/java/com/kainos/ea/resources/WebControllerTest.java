@@ -15,6 +15,7 @@ import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 
+
 @RunWith(MockitoJUnitRunner.class)
 public class WebControllerTest {
 
@@ -28,21 +29,21 @@ public class WebControllerTest {
     }
 
     @Test
-    public void getMsgReturnsListFromService() {
+    public void getAllJobRolesReturnsListFromService() {
         var expectedList = List.of(new CapabilitiesAndRoles());
-        //when(wcService.getAllJobRoles(anyString())).thenReturn(expectedList);
+        when(wcService.getAllJobRoles()).thenReturn(expectedList);
 
-        List<CapabilitiesAndRoles> actualList = wc.getMsg("test");
+        List<CapabilitiesAndRoles> actualList = wc.jobRoles();
 
         verify(wcService).getAllJobRoles();
         assertEquals(expectedList,actualList);
     }
 
     @Test
-    public void exceptionFromGetMsgPassedThrough() {
-        //when(wcService.getMsg(anyString())).thenThrow(new RuntimeException("Expected exception"));
+    public void exceptionFromGetAllJobRolesPassedThrough() {
+        when(wcService.getAllJobRoles()).thenThrow(new RuntimeException("Expected exception"));
         try {
-            wc.getMsg("test");
+            wc.jobRoles();
             fail("Exception was not thrown.");
         } catch (RuntimeException e) {
             assertEquals("Expected exception", e.getMessage());

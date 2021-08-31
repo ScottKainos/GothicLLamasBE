@@ -9,6 +9,7 @@ config.yml
 # Intellij related
 .DS_Store
 .idea
+target/
 GothicLlamasAPI/dependency-reduced-pom.xml
 GothicLlamasAPI/target/GothicLlamas-1.0-SNAPSHOT-sources.jar
 GothicLlamasAPI/target/GothicLlamas-1.0-SNAPSHOT.jar

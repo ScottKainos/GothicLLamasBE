@@ -26,23 +26,24 @@ public class WebController {
     }
 
     @GET
-    @Path("/print/{msg}")
+    @Path("/JobRoles")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<CapabilitiesAndRoles> getMsg(@PathParam("msg") String message) {
+    public List<CapabilitiesAndRoles> jobRoles() {
         return webService.getAllJobRoles();
     }
 
     @GET
-    @Path("/testJSON")
+    @Path("/JobSpecifications")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<?> testAPI(){
-//
-//        if (test.size() > 0){
-//            return test;
-//        } else {
-          return Collections.singletonList("No entries found.");
-//        }
-
+    public List<CapabilitiesAndRoles> jobSpecification() {
+        return webService.getJobRoleAndSpecifications();
     }
 
+    @GET
+    @Path("/JobCapability")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<CapabilitiesAndRoles>  jobCapability(){return webService.getJobRoleAndCapability();}
+
+
 }
+

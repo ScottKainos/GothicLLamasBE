@@ -1,6 +1,5 @@
 package com.kainos.ea.resources;
 
-import com.kainos.ea.DBConnection;
 import com.kainos.ea.WebServiceApplication;
 import com.kainos.ea.objects.CapabilitiesAndRoles;
 import org.eclipse.jetty.util.ajax.JSON;

@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 public class JobRolesAndSpecificationMapper implements RowMapper<CapabilitiesAndRoles> {
     @Override
-    public CapabilitiesAndRoles  map(ResultSet r, StatementContext ctx) throws SQLException {
+    public CapabilitiesAndRoles map(ResultSet r, StatementContext ctx) throws SQLException {
         CapabilitiesAndRoles cap = new CapabilitiesAndRoles();
         cap.setJobRole(r.getString("Job Role"));
         cap.setJobDescription(r.getString("Job description"));

@@ -16,11 +16,20 @@ public interface CapabilitiesAndRolesDAO {
     List<CapabilitiesAndRoles> getAllJobRoles();
 
 
-    @SqlQuery("SELECT jobRole AS \"Job Role\", jobDescription AS \"Job description\", linkToFullDescription AS \"Link to SharePoint\" FROM capabilityAndRoles;")
+    @SqlQuery("""
+        SELECT
+            jobRole AS "Job Role",
+            jobDescription AS "Job description",
+            linkToFullDescription AS "Link to SharePoint"
+        FROM capabilityAndRoles;""")
     @RegisterRowMapper(JobRolesAndSpecificationMapper.class)
     List<CapabilitiesAndRoles> getJobRoleAndSpecifications();
 
-    @SqlQuery("SELECT jobRole AS \"Job Role\", capability AS \"Capability\" FROM capabilityAndRoles;")
+    @SqlQuery("""
+        SELECT
+            jobRole AS "Job Role",
+            capability AS "Capability"
+        FROM capabilityAndRoles;""")
     @RegisterRowMapper(JobRoleAndCapabilityMapper.class)
     List<CapabilitiesAndRoles> getJobRoleAndCapability();
 

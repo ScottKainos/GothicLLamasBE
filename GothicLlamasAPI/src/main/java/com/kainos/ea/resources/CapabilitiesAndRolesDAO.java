@@ -18,7 +18,6 @@ public interface CapabilitiesAndRolesDAO {
     @RegisterRowMapper(JobRoleMapper.class)
     List<CapabilitiesAndRoles> getAllJobRoles();
 
-
     @SqlQuery("""
         SELECT
             jobRole,
@@ -37,4 +36,3 @@ public interface CapabilitiesAndRolesDAO {
     List<CapabilitiesAndRoles> getJobRoleAndCapability();
 
 }
-

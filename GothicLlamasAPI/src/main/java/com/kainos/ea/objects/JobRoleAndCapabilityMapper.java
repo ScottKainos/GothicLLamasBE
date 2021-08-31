@@ -15,4 +15,3 @@ public class JobRoleAndCapabilityMapper implements RowMapper<CapabilitiesAndRole
         return cap;
     }
 }
-

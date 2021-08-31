@@ -23,5 +23,4 @@ public class Service {
         return dao.getJobRoleAndCapability();
     }
 
-
 }

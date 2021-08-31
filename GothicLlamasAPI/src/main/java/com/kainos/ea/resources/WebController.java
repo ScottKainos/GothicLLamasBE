@@ -45,6 +45,4 @@ public class WebController {
         return webService.getJobRoleAndCapability();
     }
 
-
 }
-

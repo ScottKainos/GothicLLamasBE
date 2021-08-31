@@ -11,7 +11,10 @@ import java.util.List;
 
 public interface CapabilitiesAndRolesDAO {
 
-    @SqlQuery("SELECT DISTINCT jobRole FROM capabilityAndRoles;")
+    @SqlQuery("""
+    SELECT DISTINCT 
+        jobRole
+    FROM capabilityAndRoles;""")
     @RegisterRowMapper(JobRoleMapper.class)
     List<CapabilitiesAndRoles> getAllJobRoles();
 

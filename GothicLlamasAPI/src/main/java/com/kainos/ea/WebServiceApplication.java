@@ -31,10 +31,18 @@ public class WebServiceApplication extends Application<WebServiceConfiguration> 
     public void run(final WebServiceConfiguration configuration,
                     final Environment environment) {
         // TODO: implement application
+<<<<<<< Updated upstream
 
         final JdbiFactory factory = new JdbiFactory();
         final Jdbi jdbi = factory.build(environment, configuration.getDataSourceFactory(), "mysql");
         environment.jersey().register(new WebService());
+=======
+        final JdbiFactory factory = new JdbiFactory();
+        final Jdbi jdbi = factory.build(environment, configuration.getDataSourceFactory(), "mysql");
+        final CapabilitiesAndRolesDAO dao = jdbi.onDemand(CapabilitiesAndRolesDAO.class);
+        final Service wcService = new Service(dao);
+        environment.jersey().register(new WebController(wcService));
+>>>>>>> Stashed changes
     }
 }
 

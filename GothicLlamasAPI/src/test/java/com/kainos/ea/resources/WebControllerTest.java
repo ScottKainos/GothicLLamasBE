@@ -69,8 +69,6 @@ public class WebControllerTest {
         }
     }
 
-    //US003 test cases
-
     @Test
     public void jobCapabilityReturnsListFromService() {
         var expectedList = List.of(new JobRole());
@@ -84,14 +82,34 @@ public class WebControllerTest {
 
     @Test
     public void exceptionFromJobCapabilityPassedThrough() {
-        when(wcService.getJobSpecifications()).thenThrow(new RuntimeException("Expected exception"));
+        when(wcService.getJobCapability()).thenThrow(new RuntimeException("Expected exception"));
         try{
-            wc.jobSpecifications();
+            wc.jobCapability();
             fail("Exception was not thrown.");
         } catch (RuntimeException e) {
             assertEquals("Expected exception", e.getMessage());
         }
     }
 
+    @Test
+    public void bandLevelsReturnsListFromService() {
+        var expectedList = List.of(new JobRole());
+        when(wcService.getBandLevels()).thenReturn(expectedList);
 
+        List<JobRole> actualList = wc.bandLevels();
+
+        verify(wcService).getBandLevels();
+        assertEquals(expectedList,actualList);
+    }
+
+    @Test
+    public void exceptionFromBandLevelsPassedThrough() {
+        when(wcService.getBandLevels()).thenThrow(new RuntimeException("Expected exception"));
+        try{
+            wc.bandLevels();
+            fail("Exception was not thrown.");
+        } catch (RuntimeException e) {
+            assertEquals("Expected exception", e.getMessage());
+        }
+    }
 }

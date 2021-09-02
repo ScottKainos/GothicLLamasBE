@@ -81,9 +81,31 @@ public class ServiceTest {
 
     @Test
     public void exceptionFromJobCapabilityPassedThrough() {
-        when(dao.getJobSpecifications()).thenThrow(new RuntimeException("Expected exception"));
+        when(dao.getJobCapability()).thenThrow(new RuntimeException("Expected exception"));
         try{
-            wcService.getJobSpecifications();
+            wcService.getJobCapability();
+            fail("Exception was not thrown.");
+        } catch (RuntimeException e) {
+            assertEquals("Expected exception", e.getMessage());
+        }
+    }
+
+    @Test
+    public void getBandLevelsReturnsListFromDAO() {
+        var expectedList = List.of(new JobRole());
+        when(dao.getBandLevels()).thenReturn(expectedList);
+
+        List<JobRole> actualList = wcService.getBandLevels();
+
+        verify(dao).getBandLevels();
+        assertEquals(expectedList,actualList);
+    }
+
+    @Test
+    public void exceptionFromGetBandLevelsPassedThrough() {
+        when(dao.getBandLevels()).thenThrow(new RuntimeException("Expected exception"));
+        try{
+            wcService.getBandLevels();
             fail("Exception was not thrown.");
         } catch (RuntimeException e) {
             assertEquals("Expected exception", e.getMessage());

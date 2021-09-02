@@ -1,6 +1,6 @@
 package com.kainos.ea.resources;
 
-import com.kainos.ea.objects.CapabilitiesAndRoles;
+import com.kainos.ea.objects.JobRole;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,20 +16,20 @@ public class ServiceTest {
 
     @Mock
     private Service wcService;
+    @Mock
     private CapabilitiesAndRolesDAO dao;
 
     @Before
     public void setup() {
-        dao = mock(CapabilitiesAndRolesDAO.class);
         wcService = new Service(dao);
     }
 
     @Test
     public void getAllJobRolesReturnsListFromDAO() {
-        var expectedList = List.of(new CapabilitiesAndRoles());
+        var expectedList = List.of(new JobRole());
         when(dao.getAllJobRoles()).thenReturn(expectedList);
 
-        List<CapabilitiesAndRoles> actualList = wcService.getAllJobRoles();
+        List<JobRole> actualList = wcService.getAllJobRoles();
 
         verify(dao).getAllJobRoles();
         assertEquals(expectedList,actualList);
@@ -47,21 +47,21 @@ public class ServiceTest {
     }
 
     @Test
-    public void getJobRoleAndSpecificationsReturnsListFromDAO() {
-        var expectedList = List.of(new CapabilitiesAndRoles());
-        when(dao.getJobRoleAndSpecifications()).thenReturn(expectedList);
+    public void getJobSpecificationsReturnsListFromDAO() {
+        var expectedList = List.of(new JobRole());
+        when(dao.getJobSpecifications()).thenReturn(expectedList);
 
-        List<CapabilitiesAndRoles> actualList = wcService.getJobRoleAndSpecifications();
+        List<JobRole> actualList = wcService.getJobSpecifications();
 
-        verify(dao).getJobRoleAndSpecifications();
+        verify(dao).getJobSpecifications();
         assertEquals(expectedList, actualList);
     }
 
     @Test
-    public void exceptionFromGetJobRoleAndSpecificationsPassedThrough() {
-        when(dao.getJobRoleAndSpecifications()).thenThrow(new RuntimeException("Expected exception"));
+    public void exceptionFromGetJobSpecificationsPassedThrough() {
+        when(dao.getJobSpecifications()).thenThrow(new RuntimeException("Expected exception"));
         try {
-            wcService.getJobRoleAndSpecifications();
+            wcService.getJobSpecifications();
             fail("Exception was not thrown.");
         } catch (RuntimeException e) {
             assertEquals("Expected exception", e.getMessage());
@@ -70,20 +70,20 @@ public class ServiceTest {
 
     @Test
     public void jobCapabilityReturnsListFromService() {
-        var expectedList = List.of(new CapabilitiesAndRoles());
-        when(dao.getJobRoleAndCapability()).thenReturn(expectedList);
+        var expectedList = List.of(new JobRole());
+        when(dao.getJobCapability()).thenReturn(expectedList);
 
-        List<CapabilitiesAndRoles> actualList = wcService.getJobRoleAndCapability();
+        List<JobRole> actualList = wcService.getJobCapability();
 
-        verify(dao).getJobRoleAndCapability();
+        verify(dao).getJobCapability();
         assertEquals(expectedList,actualList);
     }
 
     @Test
     public void exceptionFromJobCapabilityPassedThrough() {
-        when(dao.getJobRoleAndSpecifications()).thenThrow(new RuntimeException("Expected exception"));
+        when(dao.getJobSpecifications()).thenThrow(new RuntimeException("Expected exception"));
         try{
-            wcService.getJobRoleAndSpecifications();
+            wcService.getJobSpecifications();
             fail("Exception was not thrown.");
         } catch (RuntimeException e) {
             assertEquals("Expected exception", e.getMessage());

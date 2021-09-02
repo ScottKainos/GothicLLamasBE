@@ -1,16 +1,16 @@
 package com.kainos.ea.objects;
 
-public class CapabilitiesAndRoles {
+public class JobRole {
     private String capability;
     private String bandLevel;
     private String jobRole;
     private String jobDescription;
     private String linkToFullDescription;
 
-    public CapabilitiesAndRoles() {
+    public JobRole() {
     }
 
-    public CapabilitiesAndRoles(String capability, String bandLevel, String jobRole, String jobDescription, String linkToFullDescription) {
+    public JobRole(String capability, String bandLevel, String jobRole, String jobDescription, String linkToFullDescription) {
         this.capability = capability;
         this.bandLevel = bandLevel;
         this.jobRole = jobRole;

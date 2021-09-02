@@ -1,18 +1,15 @@
 package com.kainos.ea.resources;
 
-import com.kainos.ea.objects.CapabilitiesAndRoles;
-import org.junit.Assert;
+import com.kainos.ea.objects.JobRole;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.List;
 
 import static org.junit.Assert.*;
-import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 
 
@@ -28,14 +25,12 @@ public class WebControllerTest {
         wc = new WebController(wcService);
     }
 
-    //US001 test cases
-
     @Test
     public void getAllJobRolesReturnsListFromService() {
-        var expectedList = List.of(new CapabilitiesAndRoles());
+        var expectedList = List.of(new JobRole());
         when(wcService.getAllJobRoles()).thenReturn(expectedList);
 
-        List<CapabilitiesAndRoles> actualList = wc.jobRoles();
+        List<JobRole> actualList = wc.jobRoles();
 
         verify(wcService).getAllJobRoles();
         assertEquals(expectedList,actualList);
@@ -52,24 +47,22 @@ public class WebControllerTest {
         }
     }
 
-    //US002 test cases
-
     @Test
     public void jobSpecificationReturnsListFromService(){
-        var expectedList = List.of(new CapabilitiesAndRoles());
-        when(wcService.getJobRoleAndSpecifications()).thenReturn(expectedList);
+        var expectedList = List.of(new JobRole());
+        when(wcService.getJobSpecifications()).thenReturn(expectedList);
 
-        List<CapabilitiesAndRoles> actualList = wc.jobSpecification();
+        List<JobRole> actualList = wc.jobSpecifications();
 
-        verify(wcService).getJobRoleAndSpecifications();
+        verify(wcService).getJobSpecifications();
         assertEquals(expectedList,actualList);
     }
 
     @Test
     public void exceptionFromJobSpecificationPassedThrough() {
-        when(wcService.getJobRoleAndSpecifications()).thenThrow(new RuntimeException("Expected exception"));
+        when(wcService.getJobSpecifications()).thenThrow(new RuntimeException("Expected exception"));
         try{
-            wc.jobSpecification();
+            wc.jobSpecifications();
             fail("Exception was not thrown.");
         } catch (RuntimeException e) {
             assertEquals("Expected exception", e.getMessage());
@@ -80,20 +73,20 @@ public class WebControllerTest {
 
     @Test
     public void jobCapabilityReturnsListFromService() {
-        var expectedList = List.of(new CapabilitiesAndRoles());
-        when(wcService.getJobRoleAndCapability()).thenReturn(expectedList);
+        var expectedList = List.of(new JobRole());
+        when(wcService.getJobCapability()).thenReturn(expectedList);
 
-        List<CapabilitiesAndRoles> actualList = wc.jobCapability();
+        List<JobRole> actualList = wc.jobCapability();
 
-        verify(wcService).getJobRoleAndCapability();
+        verify(wcService).getJobCapability();
         assertEquals(expectedList,actualList);
     }
 
     @Test
     public void exceptionFromJobCapabilityPassedThrough() {
-        when(wcService.getJobRoleAndSpecifications()).thenThrow(new RuntimeException("Expected exception"));
+        when(wcService.getJobSpecifications()).thenThrow(new RuntimeException("Expected exception"));
         try{
-            wc.jobSpecification();
+            wc.jobSpecifications();
             fail("Exception was not thrown.");
         } catch (RuntimeException e) {
             assertEquals("Expected exception", e.getMessage());

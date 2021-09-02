@@ -15,8 +15,8 @@ public interface CapabilitiesAndRolesDAO {
     SELECT DISTINCT 
         jobRole
     FROM capabilityAndRoles;""")
-    @RegisterRowMapper(JobRoleMapper.class)
-    List<CapabilitiesAndRoles> getAllJobRoles();
+    @RegisterRowMapper(JobRolesMapper.class)
+    List<JobRole> getAllJobRoles();
 
     @SqlQuery("""
         SELECT
@@ -24,23 +24,23 @@ public interface CapabilitiesAndRolesDAO {
             jobDescription,
             linkToFullDescription
         FROM capabilityAndRoles;""")
-    @RegisterRowMapper(JobRolesAndSpecificationMapper.class)
-    List<CapabilitiesAndRoles> getJobRoleAndSpecifications();
+    @RegisterRowMapper(JobSpecificationsMapper.class)
+    List<JobRole> getJobSpecifications();
 
     @SqlQuery("""
         SELECT
             jobRole,
             capability
         FROM capabilityAndRoles;""")
-    @RegisterRowMapper(JobRoleAndCapabilityMapper.class)
-    List<CapabilitiesAndRoles> getJobRoleAndCapability();
+    @RegisterRowMapper(JobCapabilityMapper.class)
+    List<JobRole> getJobCapability();
 
     @SqlQuery("""
             SELECT 
                 jobRole,
                 bandLevel 
             FROM capabilityAndRoles ORDER BY bandLevel DESC;""")
-    @RegisterRowMapper(BandLevelCapabilityMapper.class)
-    List<CapabilitiesAndRoles> getBandLevel();
+    @RegisterRowMapper(BandLevelMapper.class)
+    List<JobRole> getBandLevels();
 
 }

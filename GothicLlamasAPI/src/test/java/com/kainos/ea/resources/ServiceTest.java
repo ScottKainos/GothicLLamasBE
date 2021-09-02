@@ -6,41 +6,40 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
-
 import java.util.List;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
-
 @RunWith(MockitoJUnitRunner.class)
-public class WebControllerTest {
+public class ServiceTest {
 
     @Mock
     private Service wcService;
-    private WebController wc;
+    @Mock
+    private CapabilitiesAndRolesDAO dao;
 
     @Before
     public void setup() {
-        wc = new WebController(wcService);
+        wcService = new Service(dao);
     }
 
     @Test
-    public void getAllJobRolesReturnsListFromService() {
+    public void getAllJobRolesReturnsListFromDAO() {
         var expectedList = List.of(new JobRole());
-        when(wcService.getAllJobRoles()).thenReturn(expectedList);
+        when(dao.getAllJobRoles()).thenReturn(expectedList);
 
-        List<JobRole> actualList = wc.jobRoles();
+        List<JobRole> actualList = wcService.getAllJobRoles();
 
-        verify(wcService).getAllJobRoles();
+        verify(dao).getAllJobRoles();
         assertEquals(expectedList,actualList);
     }
 
     @Test
     public void exceptionFromGetAllJobRolesPassedThrough() {
-        when(wcService.getAllJobRoles()).thenThrow(new RuntimeException("Expected exception"));
-        try {
-            wc.jobRoles();
+        when(dao.getAllJobRoles()).thenThrow(new RuntimeException("Expected exception"));
+        try{
+            wcService.getAllJobRoles();
             fail("Exception was not thrown.");
         } catch (RuntimeException e) {
             assertEquals("Expected exception", e.getMessage());
@@ -48,21 +47,21 @@ public class WebControllerTest {
     }
 
     @Test
-    public void jobSpecificationReturnsListFromService(){
+    public void getJobSpecificationsReturnsListFromDAO() {
         var expectedList = List.of(new JobRole());
-        when(wcService.getJobSpecifications()).thenReturn(expectedList);
+        when(dao.getJobSpecifications()).thenReturn(expectedList);
 
-        List<JobRole> actualList = wc.jobSpecifications();
+        List<JobRole> actualList = wcService.getJobSpecifications();
 
-        verify(wcService).getJobSpecifications();
-        assertEquals(expectedList,actualList);
+        verify(dao).getJobSpecifications();
+        assertEquals(expectedList, actualList);
     }
 
     @Test
-    public void exceptionFromJobSpecificationPassedThrough() {
-        when(wcService.getJobSpecifications()).thenThrow(new RuntimeException("Expected exception"));
-        try{
-            wc.jobSpecifications();
+    public void exceptionFromGetJobSpecificationsPassedThrough() {
+        when(dao.getJobSpecifications()).thenThrow(new RuntimeException("Expected exception"));
+        try {
+            wcService.getJobSpecifications();
             fail("Exception was not thrown.");
         } catch (RuntimeException e) {
             assertEquals("Expected exception", e.getMessage());
@@ -72,19 +71,19 @@ public class WebControllerTest {
     @Test
     public void jobCapabilityReturnsListFromService() {
         var expectedList = List.of(new JobRole());
-        when(wcService.getJobCapability()).thenReturn(expectedList);
+        when(dao.getJobCapability()).thenReturn(expectedList);
 
-        List<JobRole> actualList = wc.jobCapability();
+        List<JobRole> actualList = wcService.getJobCapability();
 
-        verify(wcService).getJobCapability();
+        verify(dao).getJobCapability();
         assertEquals(expectedList,actualList);
     }
 
     @Test
     public void exceptionFromJobCapabilityPassedThrough() {
-        when(wcService.getJobCapability()).thenThrow(new RuntimeException("Expected exception"));
+        when(dao.getJobCapability()).thenThrow(new RuntimeException("Expected exception"));
         try{
-            wc.jobCapability();
+            wcService.getJobCapability();
             fail("Exception was not thrown.");
         } catch (RuntimeException e) {
             assertEquals("Expected exception", e.getMessage());
@@ -92,24 +91,25 @@ public class WebControllerTest {
     }
 
     @Test
-    public void bandLevelsReturnsListFromService() {
+    public void getBandLevelsReturnsListFromDAO() {
         var expectedList = List.of(new JobRole());
-        when(wcService.getBandLevels()).thenReturn(expectedList);
+        when(dao.getBandLevels()).thenReturn(expectedList);
 
-        List<JobRole> actualList = wc.bandLevels();
+        List<JobRole> actualList = wcService.getBandLevels();
 
-        verify(wcService).getBandLevels();
+        verify(dao).getBandLevels();
         assertEquals(expectedList,actualList);
     }
 
     @Test
-    public void exceptionFromBandLevelsPassedThrough() {
-        when(wcService.getBandLevels()).thenThrow(new RuntimeException("Expected exception"));
+    public void exceptionFromGetBandLevelsPassedThrough() {
+        when(dao.getBandLevels()).thenThrow(new RuntimeException("Expected exception"));
         try{
-            wc.bandLevels();
+            wcService.getBandLevels();
             fail("Exception was not thrown.");
         } catch (RuntimeException e) {
             assertEquals("Expected exception", e.getMessage());
         }
     }
+
 }

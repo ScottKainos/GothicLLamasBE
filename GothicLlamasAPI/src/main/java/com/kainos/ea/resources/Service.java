@@ -1,6 +1,6 @@
 package com.kainos.ea.resources;
 
-import com.kainos.ea.objects.CapabilitiesAndRoles;
+import com.kainos.ea.objects.JobRole;
 
 import java.util.List;
 
@@ -11,15 +11,15 @@ public class Service {
         this.dao = dao;
     }
 
-    public List<CapabilitiesAndRoles> getAllJobRoles() {
+    public List<JobRole> getAllJobRoles() {
         return dao.getAllJobRoles();
     }
 
-    public List<CapabilitiesAndRoles> getJobRoleAndSpecifications() {
-        return dao.getJobRoleAndSpecifications();
+    public List<JobRole> getJobSpecifications() {
+        return dao.getJobSpecifications();
     }
 
-    public List<CapabilitiesAndRoles> getJobRoleAndCapability(){ return dao.getJobRoleAndCapability(); }
+    public List<JobRole> getJobCapability(){ return dao.getJobCapability(); }
 
-    public List<CapabilitiesAndRoles> getBandLevel(){ return dao.getBandLevel(); }
+    public List<JobRole> getBandLevels(){ return dao.getBandLevels(); }
 }

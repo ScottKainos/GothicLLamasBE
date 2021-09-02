@@ -1,7 +1,7 @@
 package com.kainos.ea.resources;
 
 import com.kainos.ea.WebServiceApplication;
-import com.kainos.ea.objects.CapabilitiesAndRoles;
+import com.kainos.ea.objects.JobRole;
 import org.eclipse.jetty.util.ajax.JSON;
 import org.jdbi.v3.sqlobject.statement.SqlQuery;
 import org.json.JSONArray;
@@ -27,27 +27,27 @@ public class WebController {
     @GET
     @Path("/JobRoles")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<CapabilitiesAndRoles> jobRoles() {
+    public List<JobRole> jobRoles() {
         return webService.getAllJobRoles();
     }
 
     @GET
     @Path("/JobSpecifications")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<CapabilitiesAndRoles> jobSpecification() {
-        return webService.getJobRoleAndSpecifications();
+    public List<JobRole> jobSpecifications() {
+        return webService.getJobSpecifications();
     }
 
     @GET
     @Path("/JobCapability")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<CapabilitiesAndRoles> jobCapability(){
-        return webService.getJobRoleAndCapability();
+    public List<JobRole> jobCapability(){
+        return webService.getJobCapability();
     }
 
     @GET
     @Path("/BandLevels")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<CapabilitiesAndRoles> bandLevel(){ return webService.getBandLevel();}
+    public List<JobRole> bandLevels(){ return webService.getBandLevels();}
 
 }

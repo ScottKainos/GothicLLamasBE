@@ -11,18 +11,36 @@ import java.util.List;
 
 public interface CapabilitiesAndRolesDAO {
 
-    @SqlQuery("SELECT DISTINCT jobRole FROM capabilityAndRoles;")
+    @SqlQuery("""
+    SELECT DISTINCT 
+        jobRole
+    FROM capabilityAndRoles;""")
     @RegisterRowMapper(JobRoleMapper.class)
     List<CapabilitiesAndRoles> getAllJobRoles();
 
-
-    @SqlQuery("SELECT jobRole, jobDescription, linkToFullDescription FROM capabilityAndRoles;")
+    @SqlQuery("""
+        SELECT
+            jobRole,
+            jobDescription,
+            linkToFullDescription
+        FROM capabilityAndRoles;""")
     @RegisterRowMapper(JobRolesAndSpecificationMapper.class)
     List<CapabilitiesAndRoles> getJobRoleAndSpecifications();
 
-    @SqlQuery("SELECT jobRole, capability FROM capabilityAndRoles;")
+    @SqlQuery("""
+        SELECT
+            jobRole,
+            capability
+        FROM capabilityAndRoles;""")
     @RegisterRowMapper(JobRoleAndCapabilityMapper.class)
     List<CapabilitiesAndRoles> getJobRoleAndCapability();
 
-}
+    @SqlQuery("""
+            SELECT 
+                jobRole,
+                bandLevel 
+            FROM capabilityAndRoles ORDER BY bandLevel DESC;""")
+    @RegisterRowMapper(BandLevelCapabilityMapper.class)
+    List<CapabilitiesAndRoles> getBandLevel();
 
+}

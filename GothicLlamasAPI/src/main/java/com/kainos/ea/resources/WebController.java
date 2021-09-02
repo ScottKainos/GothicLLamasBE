@@ -1,6 +1,5 @@
 package com.kainos.ea.resources;
 
-import com.kainos.ea.DBConnection;
 import com.kainos.ea.WebServiceApplication;
 import com.kainos.ea.objects.CapabilitiesAndRoles;
 import org.eclipse.jetty.util.ajax.JSON;
@@ -42,7 +41,13 @@ public class WebController {
     @GET
     @Path("/JobCapability")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<CapabilitiesAndRoles>  jobCapability(){return webService.getJobRoleAndCapability();}
+    public List<CapabilitiesAndRoles> jobCapability(){
+        return webService.getJobRoleAndCapability();
+    }
+
+    @GET
+    @Path("/BandLevels")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<CapabilitiesAndRoles> bandLevel(){ return webService.getBandLevel();}
 
 }
-

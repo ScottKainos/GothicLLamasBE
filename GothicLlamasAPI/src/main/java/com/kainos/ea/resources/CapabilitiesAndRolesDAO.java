@@ -1,9 +1,6 @@
 package com.kainos.ea.resources;
 
-import com.kainos.ea.objects.CapabilitiesAndRoles;
-import com.kainos.ea.objects.JobRoleAndCapabilityMapper;
-import com.kainos.ea.objects.JobRoleMapper;
-import com.kainos.ea.objects.JobRolesAndSpecificationMapper;
+import com.kainos.ea.objects.*;
 import org.jdbi.v3.sqlobject.config.RegisterRowMapper;
 import org.jdbi.v3.sqlobject.statement.SqlQuery;
 
@@ -34,5 +31,13 @@ public interface CapabilitiesAndRolesDAO {
         FROM capabilityAndRoles;""")
     @RegisterRowMapper(JobRoleAndCapabilityMapper.class)
     List<CapabilitiesAndRoles> getJobRoleAndCapability();
+
+    @SqlQuery("""
+            SELECT 
+                jobRole,
+                bandLevel 
+            FROM capabilityAndRoles;""")
+    @RegisterRowMapper(BandLevelCapabilityMapper.class)
+    List<CapabilitiesAndRoles> getBandLevel();
 
 }

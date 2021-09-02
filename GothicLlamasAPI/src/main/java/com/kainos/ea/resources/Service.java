@@ -19,8 +19,7 @@ public class Service {
         return dao.getJobRoleAndSpecifications();
     }
 
-    public List<CapabilitiesAndRoles> getJobRoleAndCapability(){
-        return dao.getJobRoleAndCapability();
-    }
+    public List<CapabilitiesAndRoles> getJobRoleAndCapability(){ return dao.getJobRoleAndCapability(); }
 
+    public List<CapabilitiesAndRoles> getBandLevel(){ return dao.getBandLevel(); }
 }

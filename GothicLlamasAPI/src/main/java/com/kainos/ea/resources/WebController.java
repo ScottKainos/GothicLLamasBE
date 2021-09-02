@@ -45,4 +45,9 @@ public class WebController {
         return webService.getJobRoleAndCapability();
     }
 
+    @GET
+    @Path("/BandLevels")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<CapabilitiesAndRoles> bandLevel(){ return webService.getBandLevel();}
+
 }

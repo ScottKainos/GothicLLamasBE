@@ -11,7 +11,7 @@ public class BandLevelCapabilityMapper implements RowMapper<CapabilitiesAndRoles
     public CapabilitiesAndRoles map(ResultSet r, StatementContext ctx) throws SQLException {
         CapabilitiesAndRoles cap = new CapabilitiesAndRoles();
         cap.setJobRole(r.getString("jobRole"));
-        cap.setCapability(r.getString("bandLevel"));
+        cap.setBandLevel(r.getString("bandLevel"));
         return cap;
     }
 }

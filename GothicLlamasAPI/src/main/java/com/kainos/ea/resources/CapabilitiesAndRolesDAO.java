@@ -36,7 +36,7 @@ public interface CapabilitiesAndRolesDAO {
             SELECT 
                 jobRole,
                 bandLevel 
-            FROM capabilityAndRoles;""")
+            FROM capabilityAndRoles ORDER BY bandLevel DESC;""")
     @RegisterRowMapper(BandLevelCapabilityMapper.class)
     List<CapabilitiesAndRoles> getBandLevel();
 

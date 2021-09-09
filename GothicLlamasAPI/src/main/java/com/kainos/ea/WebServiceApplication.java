@@ -5,6 +5,8 @@ import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 import io.dropwizard.jdbi3.*;
 import com.kainos.ea.resources.*;
+import io.federecio.dropwizard.swagger.SwaggerBundle;
+import io.federecio.dropwizard.swagger.SwaggerBundleConfiguration;
 import org.jdbi.v3.core.Jdbi;
 
 public class WebServiceApplication extends Application<WebServiceConfiguration> {
@@ -19,7 +21,14 @@ public class WebServiceApplication extends Application<WebServiceConfiguration> 
     }
 
     @Override
-    public void initialize(final Bootstrap<WebServiceConfiguration> bootstrap) {}
+    public void initialize(final Bootstrap<WebServiceConfiguration> bootstrap) {
+        bootstrap.addBundle(new SwaggerBundle<WebServiceConfiguration>() {
+            @Override
+            protected SwaggerBundleConfiguration getSwaggerBundleConfiguration(WebServiceConfiguration Configuration) {
+                return Configuration.swaggerBundleConfiguration;
+            }
+        });
+    }
 
     @Override
     public void run(final WebServiceConfiguration configuration,
